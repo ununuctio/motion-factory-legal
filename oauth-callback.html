@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirigiendo a Motion Factory Publisher…</title>
+  <meta name="referrer" content="no-referrer">
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 520px; margin: 48px auto; padding: 0 20px; color: #1f2937; line-height: 1.5; }
+    a.btn { display: inline-block; margin-top: 12px; padding: 10px 16px; background: #111827; color: #fff; text-decoration: none; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h2>Completando conexión local con Motion Factory Publisher…</h2>
+  <p id="msg">Redirigiendo a <code>http://localhost:4310/api/meta/oauth/callback</code> en este equipo.</p>
+  <p><a id="fallback" class="btn" href="http://localhost:4310/api/meta/oauth/callback">Continuar manualmente</a></p>
+  <script>
+    (function () {
+      var target = "http://localhost:4310/api/meta/oauth/callback" + (window.location.search || "");
+      var link = document.getElementById("fallback");
+      if (link) link.href = target;
+      window.location.replace(target);
+    })();
+  </script>
+</body>
+</html>

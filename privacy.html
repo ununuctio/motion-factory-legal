@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Política de Privacidad · Motion Factory Publisher</title>
+  <style>
+    :root {
+      --bg: #0f1216;
+      --surface: #171c22;
+      --border: #27303a;
+      --text: #eceff4;
+      --muted: #9aa7b5;
+      --accent: #e07a5f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 40px 20px;
+    }
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 40px 36px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.9rem;
+      line-height: 1.25;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 28px;
+    }
+    h2 {
+      margin-top: 28px;
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+      color: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+    p, li { color: #d8dee9; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 6px; }
+    code {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.88em;
+    }
+    a { color: var(--accent); }
+    footer {
+      margin-top: 32px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="brand">Motion Factory · Publisher</div>
+    <h1>Política de Privacidad</h1>
+    <p class="meta">Última actualización: 25 de noviembre de 2026 · Aplicación: Motion Factory Publisher</p>
+
+    <h2>1. Naturaleza y alcance de la aplicación</h2>
+    <p>
+      <strong>Motion Factory Publisher</strong> es una herramienta privada de escritorio y operación local
+      utilizada exclusivamente por su titular para administrar, programar y publicar contenido audiovisual
+      propio en páginas de Facebook y cuentas profesionales de Instagram pertenecientes a su propio
+      portafolio empresarial. La aplicación no está abierta al público general, no registra usuarios
+      externos ni comercializa servicios a terceros.
+    </p>
+
+    <h2>2. Datos a los que accede la aplicación</h2>
+    <p>Mediante las APIs oficiales de Meta (Facebook Login y Graph API), la aplicación consulta y trata únicamente:</p>
+    <ul>
+      <li>Identificadores y nombres de las Páginas de Facebook administradas por el titular.</li>
+      <li>Identificadores y nombres de usuario de las cuentas profesionales de Instagram vinculadas a dichas Páginas.</li>
+      <li>Lista de permisos concedidos (<code>pages_show_list</code>, <code>pages_manage_posts</code>, <code>pages_read_engagement</code>, <code>instagram_basic</code>, <code>instagram_content_publish</code>, <code>business_management</code>) y estado de vigencia del token.</li>
+      <li>Metadatos editoriales y de publicación necesarios para enviar o programar videos propios (títulos, descripciones, hashtags, declaración de contenido generado con IA, identificadores remotos y enlaces permanentes).</li>
+    </ul>
+
+    <h2>3. Almacenamiento local cifrado y cero servidores de terceros</h2>
+    <p>
+      Motion Factory Publisher ejecuta su servidor únicamente en <code>localhost</code> dentro del equipo
+      del titular. No opera servidores propios en la nube ni utiliza bases de datos remotas de terceros:
+    </p>
+    <ul>
+      <li>Las credenciales de la aplicación y los tokens de acceso (User Token y Page Access Token) se cifran localmente mediante <strong>Windows DPAPI</strong> (alcance <code>CurrentUser</code>) fuera de repositorios Git y carpetas sincronizadas en la nube.</li>
+      <li>Los borradores editoriales, colas locales de programación y registros técnicos de eventos se guardan localmente en SQLite (sin tokens ni secretos).</li>
+      <li>Los archivos de video se transfieren directamente desde el equipo del titular hacia los servidores oficiales de Meta (<code>graph.facebook.com</code> y <code>rupload.facebook.com</code>) mediante HTTPS.</li>
+    </ul>
+    <p>No vendemos, alquilamos, cedemos ni compartimos datos con terceros.</p>
+
+    <h2>4. Revocación de permisos vs. eliminación de datos locales</h2>
+    <p>El software distingue dos acciones independientes y complementarias:</p>
+    <ul>
+      <li>
+        <strong>Revocación de permisos en Meta:</strong> al retirar la aplicación desde la configuración de
+        <em>Integraciones comerciales</em> de Facebook, Meta invalida el acceso futuro de la aplicación a tus
+        Páginas y cuentas de Instagram desde sus servidores.
+      </li>
+      <li>
+        <strong>Eliminación de credenciales y registros locales:</strong> pulsar <em>Desconectar</em> dentro
+        de la pestaña <em>Accounts</em> de Motion Factory Publisher elimina los tokens de acceso del almacén
+        cifrado DPAPI local; para borrar también las credenciales de la app y los registros históricos locales
+        (ledger DPAPI y base SQLite), el titular puede eliminar los directorios locales descritos en nuestra
+        página de <a href="./data-deletion.html">Eliminación de Datos de Usuario</a>.
+      </li>
+    </ul>
+
+    <h2>5. Contacto</h2>
+    <p>
+      Para consultas sobre privacidad o ejercicio de derechos sobre los datos tratados por esta aplicación,
+      contacta al titular en: <a href="mailto:hola@weurld.tv"><strong>hola@weurld.tv</strong></a>.
+    </p>
+
+    <footer>
+      <span>Motion Factory Publisher · Herramienta privada de uso propio</span>
+      <a href="./data-deletion.html">Instrucciones de Eliminación de Datos</a>
+    </footer>
+  </main>
+</body>
+</html>
